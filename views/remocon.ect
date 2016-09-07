@@ -1,0 +1,29 @@
+<% extend 'views/layout.ect' %>
+
+<div class="jumbotron">
+	<h2><%- @title %></h2>
+	<p>サーキュレータ</p>
+	<p>
+		<button id=btn class="btn btn-sm btn-primary" value=air_volume.dat>風量</button>
+	</p>
+</div>
+ 
+<script type="text/javascript">
+
+$(function() {
+	var data = {};
+	data.file = "air_volume.dat";
+    $("#btn").click(function(){
+        $.ajax({
+            type: "POST",
+			dataType: 'json',
+            url: "./ir",
+            data: data,
+            success: function(data){
+                console.log(success!);
+            }
+        });
+    });
+});
+</script>
+
