@@ -4,8 +4,8 @@
 	<h2><%- @title %></h2>
 	<p>サーキュレータ</p>
 	<p>
-		<button id=btn class="btn btn-sm btn-primary" value=air_volume.dat>風量</button>
-		<button id=btn class="btn btn-sm btn-primary" value=air_timer.dat>タイマー</button>
+		<input type="button" id=btn1 class="btn btn-sm btn-primary" value=air_volume.dat>風量</button>
+		<button type="button" id=btn2 class="btn btn-sm btn-primary" value=air_timer.dat>タイマー</button>
 	</p>
 </div>
  
@@ -13,8 +13,8 @@
 
 $(function() {
 	var data = {};
-	data.file = #btn
-    $("#btn").click(function(){
+	data.file = (this).val()
+    $("input[@type=button]").click(function(){
         $.ajax({
             type: "POST",
 			dataType: 'json',
