@@ -2,20 +2,31 @@
 
 <div class="jumbotron">
 	<h2><%- @title %></h2>
-	<p>サーキュレータ</p>
 	<p>
-		<input type="button" id=btn1 class="btn btn-sm btn-primary" value=air_volume.dat>風量</button>
-		<button type="button" id=btn2 class="btn btn-sm btn-primary" value=air_timer.dat>タイマー</button>
+		<button id=btn1 class="btn btn-lg btn-primary" value=air_volume.dat>風量調整</button>
+		<button id=btn2 class="btn btn-lg btn-primary" value=air_timer.dat>タイマー</button>
 	</p>
 </div>
  
 <script type="text/javascript">
 
 $(function() {
-	var data = {};
-	data.file = (this).val()
-    $("input[@type=button]").click(function(){
-        $.ajax({
+    $("#btn1").click(function(){
+    ajax("air_volume.dat")
+    });
+});
+
+$(function() {
+    $("#btn2").click(function(){
+    ajax("air_timer.dat")
+    });
+});
+
+
+function ajax(file){
+ var data = {};
+ data.file = file
+ $.ajax({
             type: "POST",
 			dataType: 'json',
             url: "./ir",
@@ -24,6 +35,6 @@ $(function() {
                 console.log("success!");
             }
         });
-    });
-});
+		}
 </script>
+

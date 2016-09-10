@@ -19,7 +19,7 @@ app.use(views(__dirname + '/views', {
 // GET /remocon
 app.use(route.get('/remocon', function *(){	
 	yield this.render('remocon.ect', {	
-    title: 'Remote controller', 
+    title: '扇風機', 
   });
 }));
 
