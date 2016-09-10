@@ -5,6 +5,7 @@
 	<p>サーキュレータ</p>
 	<p>
 		<button id=btn class="btn btn-sm btn-primary" value=air_volume.dat>風量</button>
+		<button id=btn class="btn btn-sm btn-primary" value=air_timer.dat>タイマー</button>
 	</p>
 </div>
  
@@ -12,7 +13,7 @@
 
 $(function() {
 	var data = {};
-	data.file = "air_volume.dat";
+	data.file = #btn
     $("#btn").click(function(){
         $.ajax({
             type: "POST",
