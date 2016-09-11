@@ -19,14 +19,14 @@ app.use(views(__dirname + '/views', {
 // GET /remocon
 app.use(route.get('/remocon', function *(){	
 	yield this.render('remocon.ect', {	
-    title: '扇風機', 
+    title: 'リモコンアプリ', 
   });
 }));
 
 // POST /ir
 app.use(route.post('/ir', function *(){
 	console.log('body: ' + JSON.stringify(this.request.body));
-	var target = 'sudo ./sendir ./signal/' + JSON.stringify(this.request.body.file).replace(/"/g,"") + ' 1 1'
+	var target = './sendir ./signal/' + JSON.stringify(this.request.body.file).replace(/"/g,"") + '.dat 1 1'
 	exec(target, (err, stdout, stderr) => {
 	//callback処理
 	if (err) { console.log(err); }

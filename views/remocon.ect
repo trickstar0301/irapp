@@ -1,27 +1,48 @@
 <% extend 'views/layout.ect' %>
 
 <div class="jumbotron">
-	<h2><%- @title %></h2>
+<br>
+	<h2>扇風機</h2>
 	<p>
 		<button id=btn1 class="btn btn-lg btn-primary" value=air_volume.dat>風量調整</button>
 		<button id=btn2 class="btn btn-lg btn-primary" value=air_timer.dat>タイマー</button>
+
 	</p>
+
+	<h2>エアコン</h2>
+	<p>
+		<input id=btn3 type="image" src="/img/cooler_on.gif" width="100" height="60" alt="エアコンオン" align="" hspace="50">
+		<input id=btn4 type="image" src="/img/cooler_off.gif" width="100" height="60" alt="エアコンオフ" align="" hspace="50">
+	</p>
+	<br>
+	<br>
 </div>
  
 <script type="text/javascript">
 
 $(function() {
     $("#btn1").click(function(){
-    ajax('fan_volume.dat')
+    ajax('fan_volume')
     });
 });
 
 $(function() {
     $("#btn2").click(function(){
-    ajax('fan_timer.dat')
+    ajax('fan_timer')
     });
 });
 
+$(function() {
+    $("#btn3").click(function(){
+    ajax('cooler_on')
+    });
+});
+
+$(function() {
+    $("#btn4").click(function(){
+    ajax('cooler_off')
+    });
+});
 
 function ajax(file){
  var data = {};
