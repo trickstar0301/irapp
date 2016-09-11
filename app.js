@@ -26,7 +26,7 @@ app.use(route.get('/remocon', function *(){
 // POST /ir
 app.use(route.post('/ir', function *(){
 	console.log('body: ' + JSON.stringify(this.request.body));
-	var target = './sendir ./signal/' + JSON.stringify(this.request.body.file).replace(/"/g,"") + '.dat 1 1'
+	var target = 'sudo ./sendir ./signal/' + JSON.stringify(this.request.body.file).replace(/"/g,"") + '.dat 1 1'
 	exec(target, (err, stdout, stderr) => {
 	//callback処理
 	if (err) { console.log(err); }
