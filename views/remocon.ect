@@ -1,7 +1,6 @@
 <% extend 'views/layout.ect' %>
 
 <div class="jumbotron">
-<br>
 	<h2>扇風機</h2>
 	<p>
 		<button id=btn1 class="btn btn-lg btn-primary" value=air_volume.dat>風量調整</button>
@@ -22,7 +21,7 @@
 
 $(function() {
     $("#btn1").click(function(){
-    ajax('fan_volume',"./cir)
+    ajax('fan_volume',"./cir")
     });
 });
 
