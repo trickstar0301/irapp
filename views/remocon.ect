@@ -22,18 +22,21 @@
 
 $(function() {
     $("#btn1").click(function(){
+	var url = "./cir"
     ajax('fan_volume')
     });
 });
 
 $(function() {
     $("#btn2").click(function(){
+	var url = "./cir"
     ajax('fan_timer')
     });
 });
 
 $(function() {
     $("#btn3").click(function(){
+	var url = "./cooler"
     ajax('cooler_on')
     });
 });
@@ -50,7 +53,7 @@ function ajax(file){
  $.ajax({
             type: "POST",
 			dataType: 'json',
-            url: "./ir",
+            url: url,
             data: data,
             success: function(data){
                 console.log("success!");

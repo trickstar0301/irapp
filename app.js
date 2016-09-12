@@ -23,10 +23,11 @@ app.use(route.get('/remocon', function *(){
   });
 }));
 
-// POST /ir
-app.use(route.post('/ir', function *(){
+// POST /cir
+app.use(route.post('/cir', function *(){
 	console.log('body: ' + JSON.stringify(this.request.body));
-	var target = 'sudo ./sendir ./signal/' + JSON.stringify(this.request.body.file).replace(/"/g,"") + '.dat 1 1'
+	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
+	var target = 'sudo ./sendir ./signal/' + file + '.dat 1 1'
 	exec(target, (err, stdout, stderr) => {
 	//callback処理
 	if (err) { console.log(err); }
@@ -34,6 +35,20 @@ app.use(route.post('/ir', function *(){
 	});
 	this.body=true;
 }));
+
+// POST /cooler
+app.use(route.post('/cooler', function *(){
+	console.log('body: ' + JSON.stringify(this.request.body));
+	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
+	var target = 'sudo ./sendir ./signal/' + file + '.dat 1 4'
+	exec(target, (err, stdout, stderr) => {
+	//callback処理
+	if (err) { console.log(err); }
+		console.log(stdout);
+	});
+	this.body=true;
+}));
+
 
 // static files
 app.use(serve(__dirname + '/public'));
