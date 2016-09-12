@@ -22,34 +22,31 @@
 
 $(function() {
     $("#btn1").click(function(){
-	var url = "./cir"
-    ajax('fan_volume')
+    ajax('fan_volume',"./cir)
     });
 });
 
 $(function() {
     $("#btn2").click(function(){
-	var url = "./cir"
-    ajax('fan_timer')
+    ajax('fan_timer',"./cir")
     });
 });
 
 $(function() {
     $("#btn3").click(function(){
-	var url = "./cooler"
-    ajax('cooler_on')
+    ajax('cooler_on',"./cooler")
     });
 });
 
 $(function() {
     $("#btn4").click(function(){
-    ajax('cooler_off')
+    ajax('cooler_off',"./cooler")
     });
 });
 
-function ajax(file){
+function ajax(file,url){
  var data = {};
- data.file = file
+ data.file = file;
  $.ajax({
             type: "POST",
 			dataType: 'json',
