@@ -5,7 +5,6 @@
 	<p>
 		<button id=btn1 class="btn btn-lg btn-primary" value=air_volume.dat>風量調整</button>
 		<button id=btn2 class="btn btn-lg btn-primary" value=air_timer.dat>タイマー</button>
-
 	</p>
 
 	<h2>エアコン</h2>
@@ -15,19 +14,26 @@
 	</p>
 	<br>
 	<br>
+
+	<h2>テレビ</h2>
+    	<p>
+		<button id=btn_tv class="btn btn-lg btn-primary" >TV</button>
+    	</p>
+    <br>
+    <br>
 </div>
  
 <script type="text/javascript">
 
 $(function() {
     $("#btn1").click(function(){
-    ajax('fan_volume',"./cir")
+    ajax('fan_volume',"./cir_volume")
     });
 });
 
 $(function() {
     $("#btn2").click(function(){
-    ajax('fan_timer',"./cir")
+    ajax('fan_timer',"./cir_timer")
     });
 });
 
@@ -40,6 +46,12 @@ $(function() {
 $(function() {
     $("#btn4").click(function(){
     ajax('cooler_off',"./cooler")
+    });
+});
+
+$(function() {
+    $("#btn_tv").click(function(){
+    ajax('tv',"./tv")
     });
 });
 

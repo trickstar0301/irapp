@@ -24,10 +24,23 @@ app.use(route.get('/remocon', function *(){
 }));
 
 // POST /cir
-app.use(route.post('/cir', function *(){
-	console.log('body: ' + JSON.stringify(this.request.body));
-	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
-	var target = 'sudo ./sendir ./signal/' + file + '.dat 1 1'
+app.use(route.post('/cir_volume', function *(){
+//	console.log('body: ' + JSON.stringify(this.request.body));
+//	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
+	var target = 'sudo ./sendir ./signal/air_volume.dat 1 1'
+	exec(target, (err, stdout, stderr) => {
+	//callback処理
+	if (err) { console.log(err); }
+		console.log(stdout);
+	});
+	this.body=true;
+}));
+
+// POST /cir
+app.use(route.post('/cir_timer', function *(){
+//	console.log('body: ' + JSON.stringify(this.request.body));
+//	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
+	var target = 'sudo ./sendir ./signal/air_timer.dat 1 1'
 	exec(target, (err, stdout, stderr) => {
 	//callback処理
 	if (err) { console.log(err); }
@@ -37,10 +50,8 @@ app.use(route.post('/cir', function *(){
 }));
 
 // POST /cooler
-app.use(route.post('/cooler', function *(){
-	console.log('body: ' + JSON.stringify(this.request.body));
-	var file = JSON.stringify(this.request.body.file).replace(/"/g,"")
-	var target = 'sudo ./sendir ./signal/' + file + '.dat 1 4'
+app.use(route.post('/cooler_on', function *(){
+	var target = 'sudo ./sendir ./signal/cooler_on.dat 1 1'
 	exec(target, (err, stdout, stderr) => {
 	//callback処理
 	if (err) { console.log(err); }
@@ -49,6 +60,17 @@ app.use(route.post('/cooler', function *(){
 	this.body=true;
 }));
 
+// POST /tv
+app.use(route.post('/tv', function *(){
+	console.log('body: ' + JSON.stringify(this.request.body));
+	var target = 'sudo ./sendir ./signal/tv_on.dat 1 1'
+	exec(target, (err, stdout, stderr) => {
+	//callback処理
+	if (err) { console.log(err); }
+		console.log(stdout);
+	});
+	this.body=true;
+}));
 
 // static files
 app.use(serve(__dirname + '/public'));
